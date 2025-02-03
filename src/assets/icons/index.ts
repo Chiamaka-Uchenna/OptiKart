@@ -4,7 +4,6 @@ export { default as chevronLeft } from "./chevron-left.svg";
 export { default as cheveronRight } from "./chevron-right.svg";
 export { default as copyrightSign } from "./copyright-sign.svg";
 export { default as facebook } from "./facebook.svg";
-export { default as hamburger } from "./hamburger.svg";
 export { default as instagram } from "./instagram.svg";
 export { default as support } from "./support.svg";
 export { default as shieldTick } from "./shield-tick.svg";

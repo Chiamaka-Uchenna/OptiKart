@@ -1,37 +1,54 @@
-import React from "react";
+
 import { motion } from "framer-motion";
 import { Product } from "../types/ProductType";
+import { useNavigate } from "react-router-dom";
 
 interface DiscountProps {
   products: Product[];
 }
 
 const DiscountComp: React.FC<DiscountProps> = ({ products }) => {
+  const navigate = useNavigate();
+
   // Sort products by discount percentage in descending order and take the top 5
   const sortedProducts = [...products]
     .sort((a, b) => b.discountPercentage - a.discountPercentage)
     .slice(0, 5);
 
   return (
-    <div className="py-6 bg-golden-yellow">
-      <h2 className="text-2xl font-bold mb-4">Get Up To 70% Off</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+    <div className="py-8 px-4">
+      <h2 className="text-3xl font-extrabold mb-6 text-left">
+        Get Up To 70% Off
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
         {sortedProducts.map((product) => (
           <motion.div
             key={product.id}
-            className="p-4 border rounded-lg shadow-md cursor-pointer bg-deep-blue"
+            className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition-transform duration-300 hover:scale-105"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => navigate(`/product/${product.id}`)}
           >
+            {/* Top Section - Discount & Text */}
+            <div className="bg-deep-blue p-4">
+              <p className="text-golden-yellow font-medium">Save</p>
+              <p className="text-3xl font-bold text-golden-yellow">
+                $
+                {Math.round((product.price * product.discountPercentage) / 100)}
+              </p>
+              <p className="text-golden-yellow mt-2">
+                {product.title.length > 40
+                  ? product.title.slice(0, 40) + "..."
+                  : product.title}
+              </p>
+            </div>
+
+            {/* Bottom Section - Product Image */}
             <img
-              src={product.images[0]} // Assuming the first image in the array is the main image
+              src={product.images[0]} // Assuming first image is primary
               alt={product.title}
-              className="w-full h-32 object-cover rounded-md mb-2"
+              className="w-full h-40 object-cover"
             />
-            <p className="text-lg font-semibold">
-              Save {product.discountPercentage}%
-            </p>
-            <p className="text-gray-600">{product.title}</p>
           </motion.div>
         ))}
       </div>

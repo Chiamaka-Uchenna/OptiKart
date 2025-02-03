@@ -11,6 +11,10 @@ import {
 } from "./sections";
 import Navbar from "./components/Navbar";
 import ProductPage from "./pages/ProductPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage"; // Dynamic route for product details
+import SearchResults from "./pages/SearchResults"; 
+import CategoryPage from "./pages/CategoryPage"; // New Category page
+import BrandPage from "./pages/BrandPage"; // the new BrandPage component
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -19,7 +23,6 @@ function App() {
       <main className="relative">
         <Navbar />
         <div className="pt-20">
-          {" "}
           {/* Ensures all pages are not covered by the navbar */}
           <Routes>
             <Route
@@ -51,6 +54,13 @@ function App() {
               }
             />
             <Route path="/products" element={<ProductPage />} />
+            <Route path="/product/:id" element={<ProductDetailsPage />} />
+            <Route path="/search" element={<SearchResults />} />
+            {/* New route for category page */}
+            <Route path="/category/:category" element={<CategoryPage />} />
+            {/* New route for brand page */}
+            <Route path="/brand/:brand" element={<BrandPage />} />{" "}
+            {/* 👈 Added BrandPage route */}
           </Routes>
         </div>
         <section className="bg-deep-blue padding-x padding-t pb-8">

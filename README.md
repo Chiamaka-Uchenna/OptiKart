@@ -1,50 +1,99 @@
-# React + TypeScript + Vite
+# OptiKart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+OptiKart is an e-commerce platform designed to provide an optimum shopping experience. Built with a modern tech stack, the application is fully responsive and offers intuitive features such as product search and seamless navigation. Click on the **"Shop Now"** button to browse our products.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Running Tests](#running-tests)
+- [Notable Design & Architectural Decisions](#notable-design--architectural-decisions)
+- [License](#license)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies Used
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Vite**: Bootstrapping the React application
+- **React**: Frontend UI library
+- **TypeScript**: Static typing for enhanced development experience
+- **Tailwind CSS**: Utility-first CSS framework for responsive design
+- **Axios**: Promise-based HTTP client for API interactions
+- **Framer Motion**: Animation library for smooth UI transitions
+- **React Router DOM**: Routing for single-page application navigation
+- **@mui/material**: Material UI components for consistent UI design
+- **@mui/icons-material**: Icons library for Material UI
+- **React Icons**: Additional icon support
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+You can set up and run OptiKart on your local machine by following these steps.
+
+### 1. Clone the Repository
+
+Clone the project from GitHub using one of the methods below:
+
+- **Using Git:**
+
+  ```bash
+  git clone https://github.com/chiamaka-uchenna/optikart.git
+  cd optikart
+
+Download as ZIP:
+
+Visit github.com/chiamaka-uchenna/optikart and click on the "Code" button, then select "Download ZIP". Extract the contents and navigate to the project directory.
+
+2. Install Project Dependencies
+Inside the project directory, run:
+
+bash
+Copy code
+npm install
+This command installs all necessary dependencies, including:
+
+axios
+framer-motion
+react-router-dom
+@mui/material
+@mui/icons-material
+react-icons
+tailwindcss (along with its required PostCSS configurations)
+If any packages are missing, you can install them individually:
+
+bash
+Copy code
+npm install axios framer-motion react-router-dom @mui/material @mui/icons-material react-icons tailwindcss
+
+
+
+3. Usage
+1. Running the Development Server
+Start the development server with:
+
+bash
+Copy code
+npm run dev
+Open your browser and navigate to http://localhost:3000 (or the URL provided in your terminal) to view the application.
+
+2. Building for Production
+To create a production-ready build, run:
+
+bash
+Copy code
+npm run build
+After building, you can preview the production build locally with:
+
+bash
+Copy code
+npm run preview
+3. Navigating the App
+Home Page:
+The homepage features a "Shop Now" button that directs you to the product page.
+
+Product Page:
+Explore a range of products and use the search functionality to quickly find specific items.

@@ -1,6 +1,8 @@
-import React from "react";
+
 import { motion } from "framer-motion";
 import { Product } from "../types/ProductType"; // Importing the Product type
+import { Link } from "react-router-dom"; // Importing Link for routing
+
 
 interface CategoryProps {
   products: Product[]; // Using the Product type from ProductType.ts
@@ -27,16 +29,18 @@ const Category: React.FC<CategoryProps> = ({ products }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <img
-                  src={product.thumbnail}
-                  alt={product.title}
-                  className="w-full h-40 object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                  <span className="text-white text-lg font-semibold">
-                    {category}
-                  </span>
-                </div>
+                <Link to={`/category/${category}`}>
+                  <img
+                    src={product.thumbnail}
+                    alt={product.title}
+                    className="w-full h-40 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                    <span className="text-white text-lg font-semibold">
+                      {category}
+                    </span>
+                  </div>
+                </Link>
               </motion.div>
             );
           }

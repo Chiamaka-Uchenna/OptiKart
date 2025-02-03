@@ -1,34 +1,24 @@
-
-import { star } from "../assets/icons";
+import { FaStar } from "react-icons/fa";
 
 interface ReviewCardProps {
-  imgURL: string;
-  customerName: string;
+  reviewerName: string;
   rating: number;
   feedback: string;
 }
 
 const ReviewCard: React.FC<ReviewCardProps> = ({
-  imgURL,
-  customerName,
+  reviewerName,
   rating,
   feedback,
 }) => {
   return (
-    <div className="flex justify-center items-center flex-col">
-      <img
-        src={imgURL}
-        alt="customer"
-        className="rounded-full object-cover w-[120px] h-[120px]"
-      />
-      <p className="mt-6 max-w-sm text-center info-text">{feedback}</p>
-      <div className="mt-3 flex justify-center items-center gap-2.5">
-        <img src={star} width={24} height={24} className="object-contain m-0" />
-        <p className="text-xl font-montserrat text-slate-gray">{rating}</p>
+    <div className="flex flex-col items-center bg-deep-blue text-white py-12 px-12 rounded-lg shadow-lg w-full max-w-[400px] h-auto">
+      <p className="text-center text-white text-sm">{feedback}</p>
+      <h3 className="mt-1 text-white font-bold">{reviewerName}</h3>
+      <div className="mt-3 flex items-center gap-2">
+        <FaStar className="text-golden-yellow" size={16} />
+        <p className="text-lg text-golden-yellow font-thin">{rating}</p>
       </div>
-      <h3 className="mt-1 font-palanquin text-3xl text-center font-bold">
-        {customerName}
-      </h3>
     </div>
   );
 };
