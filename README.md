@@ -41,7 +41,7 @@ Clone the project from GitHub using one of the methods below:
 - **Using Git:**
 
   ```bash
-  git clone https://github.com/chiamaka-uchenna/optikart.git
+  git clone https://github.com/Chiamaka-Uchenna/OptiKart.git
   cd optikart
 
 Download as ZIP:

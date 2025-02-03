@@ -19,7 +19,7 @@ const Hero = () => {
         <p className="text-xl font-montserrat text-coral-red"></p>
         <h1 className="mt-10 font-palanquin text-deep-blue text-8xl max-sm:text-[65px] max-sm:leading-none font-bold">
           <span className="xl:bg-white xl:whitespace-nowrap relative z-10 pr-10">
-            Experience a more
+            Experience a true
           </span>
           <br />
           <span className="text-golden-yellow font-light inline-block mt-3">
