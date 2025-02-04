@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PopularProductCard from "../components/PopularProductCard";
 import { Product } from "../types/ProductType";
-import { FaStar } from "react-icons/fa"; // Importing FaStar from react-icons
-import { apiUrl } from "../services/api"; // Import apiUrl
+import { FaStar } from "react-icons/fa";
+import { apiUrl } from "../services/api";
 
 const PopularProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(apiUrl); // Using apiUrl
+        const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }
@@ -34,6 +36,10 @@ const PopularProducts = () => {
     fetchProducts();
   }, []);
 
+  const handleProductClick = (productId: number) => {
+    navigate(`/product/${productId}`);
+  };
+
   if (loading)
     return <p className="text-center text-lg">Loading products...</p>;
   if (error) return <p className="text-center text-red-500">Error: {error}</p>;
@@ -52,7 +58,11 @@ const PopularProducts = () => {
 
       <div className="mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-14">
         {products.map((product) => (
-          <div key={product.id} className="flex flex-col items-center">
+          <div
+            key={product.id}
+            className="flex flex-col items-center cursor-pointer"
+            onClick={() => handleProductClick(product.id)}
+          >
             {/* Image Card */}
             <PopularProductCard product={product} />
 

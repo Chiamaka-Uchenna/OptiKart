@@ -1,21 +1,22 @@
 import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Button from "../components/Button";
 import { Product } from "../types/ProductType";
-import { apiUrl } from "../services/api"; // Import apiUrl
+import { apiUrl } from "../services/api";
 
 const SuperQuality: FC = () => {
   const [furnitureImage, setFurnitureImage] = useState<string>("");
+  const navigate = useNavigate(); // Initialize navigate function
 
   useEffect(() => {
     const fetchFurniture = async () => {
       try {
-        // Use apiUrl to fetch products from the general products API
-        const response = await fetch(`${apiUrl}/category/furniture`); // Example usage of apiUrl
+        const response = await fetch(`${apiUrl}/category/furniture`);
         const data = await response.json();
-        const product: Product = data.products[0]; // Get the first furniture product
+        const product: Product = data.products[0];
 
         if (product && product.images.length > 0) {
-          setFurnitureImage(product.images[0]); // Set the first product image
+          setFurnitureImage(product.images[0]);
         }
       } catch (error) {
         console.error("Error fetching furniture:", error);
@@ -24,6 +25,11 @@ const SuperQuality: FC = () => {
 
     fetchFurniture();
   }, []);
+
+  // Click handler for navigation
+  const handleNavigation = () => {
+    navigate("/category/furniture");
+  };
 
   return (
     <section
@@ -43,17 +49,21 @@ const SuperQuality: FC = () => {
           durability, style, and functionality for a perfect home ambiance.
         </p>
         <p className="mt-6 lg:max-w-lg info-text">
-          At OptiKart, we are dedicated to providing products that combines
+          At OptiKart, we are dedicated to providing products that combine
           aesthetic appeal with long-lasting quality.
         </p>
         <div className="mt-11">
-          <Button label="View Collection" />
+          {/* Attach click handler to the button */}
+          <Button label="View Collection" onClick={handleNavigation} />
         </div>
       </div>
 
-      {/* Image Section (Yellow Card with Furniture Image) */}
+      {/* Image Section */}
       <div className="flex-1 flex justify-center items-center">
-        <div className="bg-yellow-400 p-6 rounded-lg shadow-lg">
+        <div
+          className="bg-yellow-400 p-6 rounded-lg shadow-lg cursor-pointer"
+          onClick={handleNavigation} // Attach click handler to the image container
+        >
           {furnitureImage ? (
             <img
               src={furnitureImage}
